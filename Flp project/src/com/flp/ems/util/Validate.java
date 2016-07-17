@@ -88,16 +88,17 @@ public class Validate {
 
 	}*/
 
-	/*public static final  boolean isvalidEmail(final String mail) {
-		String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+	public static boolean isvalidEmail(String mail) {
+		return flag;
+		/*String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
 		java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-		java.util.regex.Matcher m = p.matcher(mail);
-		return m.matches();
+		java.util.regex.Matcher  = p.matcher(mail);
+		//return m.matches();
 		matcher = pattern.matcher(mail);
-		return matcher.matches();
+		return matcher.matches();*/
 		
 
-	}*/
+	}
 	
 	public static boolean isvalidDate(String dat)
 	{

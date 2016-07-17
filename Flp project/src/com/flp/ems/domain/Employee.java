@@ -102,25 +102,32 @@ public class Employee {
 		Roles_Id = roles_Id;
 	}
 
-	/*@Override
+	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
+		/*int result = 1;
 		result = prime * result + ((Email_Id == null) ? 0 : Email_Id.hashCode());
-		result = prime * result + ((Kin_Id == null) ? 0 : Kin_Id.hashCode());
+		result = prime * result+Kin_Id;
+		return result;*/
+		System.out.println("in hash code");
+		
+		int result=1;
+		//result=prime*result+((Email_Id==null) ? 0: Email_Id.hashCode());
+		result=prime*result+Kin_Id;
+		//Systprime.out.println(" hash value is "+ 31+Kin_Id);
 		return result;
-	}*/
-/*
-	@Override
+	}
+
+	/*@Override
 	public String toString() {
 		return "Employee [Employee_Id=" + Employee_Id + ", Name=" + Name + ", Kin_Id=" + Kin_Id + ", Email_Id="
 				+ Email_Id + ", Phone_No=" + Phone_No + ", DOB=" + DOB + ", DOJ=" + DOJ + ", Address=" + Address
 				+ ", Department_Id=" + Department_Id + ", Project_Id=" + Project_Id + ", Roles_Id=" + Roles_Id + "]";
 	}*/
 
-	/*@Override
+	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
+		/*if (this == obj)
 			return true;
 		if (obj == null)
 			return false;
@@ -132,13 +139,41 @@ public class Employee {
 				return false;
 		} else if (!Email_Id.equals(other.Email_Id))
 			return false;
-		if (Kin_Id == null) {
-			if (other.Kin_Id != null)
+		if (Kin_Id == 0) {
+			if (other.Kin_Id != 0)
 				return false;
-		} else if (!Kin_Id.equals(other.Kin_Id))
+		} else if (!(Kin_Id==other.Kin_Id))
 			return false;
-		return true;
-	}*/
+		return true;*/
+		System.out.println("in equals");
+		/*Employee em=(Employee)obj;
+		System.out.println("1st"+getKin_Id());
+		System.out.println("2nd"+em.getKin_Id());
+		if(this.getKin_Id()==em.getKin_Id())
+		{
+			System.out.println("same");
+			return true;
+		}
+		
+		return false;*/
+		if(obj==null)
+		{
+			
+		}
+		if(obj instanceof Employee)
+		{
+			
+			Employee ep=(Employee)obj;
+			if(this.getKin_Id()==ep.getKin_Id()) //&& this.getEmail_Id()==ep.getEmail_Id())
+			{
+				System.out.println("same kin_id found");
+				return true;
+			}
+			
+		}
+		//System.out.println("add some record first");
+		return false;
+	}
 
 	@Override
 	public String toString() {

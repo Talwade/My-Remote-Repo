@@ -52,9 +52,7 @@ public class BootClass {
 
 	}
 }
-*/
-
-
+ */
 
 package com.flp.ems.view;
 
@@ -63,44 +61,49 @@ import java.util.Scanner;
 
 import com.flp.ems.domain.Employee;
 
-	public class BootClass {
-	
-		static int ch=0;
-		static UserInteraction ui=new UserInteraction();	
-		static Scanner sc=new Scanner(System.in);
-		public static void main(String args[])
-		{   
-			
-				menuSelection();
-			
+public class BootClass {
+
+	static int ch;
+	static UserInteraction ui = new UserInteraction();
+	static Scanner sc = new Scanner(System.in);
+
+	public static void main(String args[]) {
+
+		menuSelection();
+
 	}
-		
-	public static void menuSelection(){
-		
-		while(true){	
-			System.out.println("Enter ur choice 1.Add \n2.Modify \n3.Remove \n4.Search \n5.GetAllEmp");
-			ch=sc.nextInt();
-		switch(ch)
-		{
-			case 1:ui.AddEmployee();
-					
-					break;
-			case 2:ui.ModifyEmployee();
-					break;
-			case 3:ui.RemoveEmployee();
-              		break;
-			case 4:ui.SearchEmployee();
-					
-					break;
-			case 5:ui.getAll();
-					
-					break;
-			case 6:System.exit(0); 
-			break;
-		}
+
+	public static void menuSelection() {
+
+		while (true) {
+			System.out
+					.println("Enter ur choice 1.Add \n2.Modify \n3.Remove \n4.Search \n5.GetAllEmp \n6.Exit");
+			ch = sc.nextInt();
+			switch (ch) {
+			case 1:
+				ui.AddEmployee();
+
+				break;
+			case 2:
+				ui.ModifyEmployee();
+				break;
+			case 3:
+				ui.RemoveEmployee();
+				break;
+			case 4:
+				ui.SearchEmployee();
+
+				break;
+			case 5:
+				ui.getAll();
+
+				break;
+			case 6:
+				System.exit(0);
+				break;
+			}
 
 		}
 	}
 
-	}
-	
+}

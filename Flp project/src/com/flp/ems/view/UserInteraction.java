@@ -19,7 +19,7 @@ import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 public class UserInteraction {
 
 	// Validate valid = new Validate();
-
+private static  String name,emailid;
 	private static int Empployeeid;
 	private int Kin_id;
 	private static String myemp;
@@ -43,7 +43,7 @@ public class UserInteraction {
 	//private static int Data;
 	private boolean flag = false;
 	private static String names,emails;
-	private int kids;
+	private static  int kids,kids1;
 	private static boolean loopAgain = true;
 	private int choice;
 	Scanner scan = new Scanner(System.in);
@@ -54,7 +54,7 @@ public class UserInteraction {
 		
 
 		// loop while user not entering no
-		do {
+		//do {
 			System.out.print("Enter Name of employee");
 			Name = scan.next();
 			System.out.println("Enter kin id");
@@ -133,49 +133,55 @@ public class UserInteraction {
 
 			}
 
-			System.out.print("Enter more info (y/n)?");
+			System.out.print("View Employee details. Press y for yes \n n for no");
 			String answer = scan.next();
 
 			// condition to satisfy in order to loop again
 			if (answer.contains("y") || answer.contains("Y")) {
 
 				// printhashmap();
-				continue;
+				validdate(Dateofjoining);
+				validdob(Dateofbirth);
+				showmap();
+				//continue;
 			} else if (answer.contains("n") || answer.equals("N")) {
 
-				validdate(Dateofjoining);
-				showmap();
-
+				System.exit(0);
+			//	break;
 			}
 
-			break;
-		} while (loopAgain);
+			//break;
+		//}// while (loopAgain);
 		return emp.AddEmployee((HashMap)mapStudent);
 
-		/*
-		 * System.out.println("\n**********************************");
-		 * System.out.println("EMS"); System.out.println( "   KINID  " +
-		 * "     EMAILID " + "	NAME " + "   DEPARTMENT  " + "		PROJECT  "+
-		 * "        ROLE "); for (int id : mapStudent.keySet()) {
-		 * System.out.println("   " + kinid + "     " + mapStudent.get(kinid) +
-		 * "   " +mailid +mapStudent.get(mailid) +"   " +name+
-		 * mapStudent.get(name) +"  "+dept+mapStudent.get(dept)+"  "
-		 * +proj+mapStudent.get(proj)+ "   "+role+mapStudent.get(role)); }
-		 * System.out.println("\n**********************************");
-		 */
+	}
 
+	private boolean validdob(String dateofbirth2) {
+		
+		Matcher mtch = pat.matcher(dateofbirth2);
+		if (mtch.matches()) {
+			System.out.println("valid date of birth");
+			
+			return true;
+		}
+		System.out.println("invalid date enter again");
+		//loopAgain = true;
+
+		return false;
+		// TODO Auto-generated method stub
+		
 	}
 
 	private boolean validdate(String doj) {
 
 		Matcher mtch = pat.matcher(doj);
 		if (mtch.matches()) {
-			System.out.println("valid date");
+			System.out.println("valid date of joining(dd/mm/yyyy)");
 			
 			return true;
 		}
-		System.out.println("invalid date enter again");
-		loopAgain = true;
+		System.out.println("invalid date enter again..required(dd/mm/yyyy)");
+		//loopAgain = true;
 
 		return false;
 
@@ -193,14 +199,15 @@ public class UserInteraction {
 		mapStudent.put("Dept", dept);
 		mapStudent.put("Project", proj);
 		mapStudent.put("Role", role);
-		System.out.println(" " + mapStudent + " ");
+		System.out.println(mapStudent);
 
-		emp.AddEmployee((HashMap) mapStudent);
+		//emp.AddEmployee((HashMap) mapStudent);
 
 	}
 
 	public Employee ModifyEmployee() {
-		String name,emailid;
+		
+		int ch;
 		System.out.println("enter name");
 		name=scan.next();
 		System.out.println("enter email");
@@ -213,11 +220,11 @@ public class UserInteraction {
 		{
 			
 				Map<String,Object> modify=new HashMap<String,Object>();
-				System.out.println("modify employee");
-				System.out.println("1.modify name \n2.modify email" );
+				System.out.println("Modify employee");
+				System.out.println("1.Modify name \n2.Modify email" );
 				
 				System.out.println("enter your choice");
-				int ch=scan.nextInt();
+				ch=scan.nextInt();
 				switch(ch)
 				{
 				case 1:
@@ -235,7 +242,8 @@ public class UserInteraction {
 				
 			}
 		}
-		return null;
+		//return null;
+		return e;
 		
 /*System.out.println("enter kinid");
 int empid;
@@ -274,12 +282,13 @@ return null;
 	
 		
 	}
-	boolean RemoveEmployee() {
+	public boolean RemoveEmployee() {
 
+	
 		
 		System.out.println("enter the kin to remove");
-		kids=scan.nextInt();
-		return emp.RemoveEmployee(kids);
+		kids1=scan.nextInt();
+		return emp.RemoveEmployee(kids1);
 	}
 
 	/*public Employee SearchEmployee() {
@@ -368,9 +377,9 @@ return null;
 		boolean val;
 		if (val = mapStudent.isEmpty()) {
 			/* System.out.println("Empty"); */
-			System.out.println("Map empty " + val);
+			System.out.println("Empty.No data added yet");
 		} 
-		//return emp.getAllEmployee();
+		 emp.getAllEmployee();
 
 		// printhashmap();
 

@@ -10,7 +10,7 @@ public interface IemployeeDao {
 
 	void ModifyEmployee(Map empModifiedDetails,String val,String val1,int empId,int val2);
 	//void RemoveEmployee(String value);
-	boolean RemoveEmployee(int empid);
+	boolean RemoveEmployee(int empids);
 	Employee SearchEmployee(String val,String val1,int val2);
 	void getAllEmployee();
 	Employee AddEmployee(Employee e);

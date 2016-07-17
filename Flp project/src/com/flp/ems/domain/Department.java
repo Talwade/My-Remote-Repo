@@ -3,7 +3,7 @@ package com.flp.ems.domain;
 public class Department {
 private String department;
 private String departmentid;
-public String getDepartment() {
+/*public String getDepartment() {
 	return department;
 }
 public void setDepartment(String department) {
@@ -14,7 +14,7 @@ public String getDepartmentid() {
 }
 public void setDepartmentid(String departmentid) {
 	this.departmentid = departmentid;
-}
+}*/
 
 	
 	
