@@ -56,6 +56,7 @@ public class BootClass {
 
 package com.flp.ems.view;
 
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -67,13 +68,13 @@ public class BootClass {
 	static UserInteraction ui = new UserInteraction();
 	static Scanner sc = new Scanner(System.in);
 
-	public static void main(String args[]) {
+	public static void main(String args[]) throws ClassNotFoundException, SQLException {
 
 		menuSelection();
 
 	}
 
-	public static void menuSelection() {
+	public static void menuSelection() throws ClassNotFoundException, SQLException {
 
 		while (true) {
 			System.out

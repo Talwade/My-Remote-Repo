@@ -10,6 +10,16 @@ public class Employee {
 	private String DOJ;
 	private String Address;
 	private String Department_Id;
+	private String address;
+	public String getDepart_Name() {
+		return Depart_Name;
+	}
+
+	public void setDepart_Name(String depart_Name) {
+		Depart_Name = depart_Name;
+	}
+
+	private String Depart_Name;
 	private String Project_Id;
 	private String Roles_Id;
 
@@ -26,16 +36,16 @@ public class Employee {
 		return Kin_Id;
 	}
 
-	public void setKin_Id(int kin_Id) {
-		Kin_Id = kin_Id;
+	public int setKin_Id(int kin_Id) {
+		return Kin_Id = kin_Id;
 	}
 
 	public String getEmail_Id() {
 		return Email_Id;
 	}
 
-	public void setEmail_Id(String email_Id) {
-		Email_Id = email_Id;
+	public String setEmail_Id(String email_Id) {
+		return Email_Id = email_Id;
 	}
 
 	public String getPhone_No() {
@@ -102,22 +112,22 @@ public class Employee {
 		Roles_Id = roles_Id;
 	}
 
-	@Override
+	/*@Override
 	public int hashCode() {
 		final int prime = 31;
-		/*int result = 1;
+		int result = 1;
 		result = prime * result + ((Email_Id == null) ? 0 : Email_Id.hashCode());
 		result = prime * result+Kin_Id;
-		return result;*/
+		return result;
 		System.out.println("in hash code");
 		
 		int result=1;
-		//result=prime*result+((Email_Id==null) ? 0: Email_Id.hashCode());
+		result=prime*result+((Email_Id==null) ? 0: Email_Id.hashCode());
 		result=prime*result+Kin_Id;
 		//Systprime.out.println(" hash value is "+ 31+Kin_Id);
 		return result;
 	}
-
+*/
 	/*@Override
 	public String toString() {
 		return "Employee [Employee_Id=" + Employee_Id + ", Name=" + Name + ", Kin_Id=" + Kin_Id + ", Email_Id="
@@ -125,28 +135,11 @@ public class Employee {
 				+ ", Department_Id=" + Department_Id + ", Project_Id=" + Project_Id + ", Roles_Id=" + Roles_Id + "]";
 	}*/
 
-	@Override
+	/*@Override
 	public boolean equals(Object obj) {
-		/*if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Employee other = (Employee) obj;
-		if (Email_Id == null) {
-			if (other.Email_Id != null)
-				return false;
-		} else if (!Email_Id.equals(other.Email_Id))
-			return false;
-		if (Kin_Id == 0) {
-			if (other.Kin_Id != 0)
-				return false;
-		} else if (!(Kin_Id==other.Kin_Id))
-			return false;
-		return true;*/
+		
 		System.out.println("in equals");
-		/*Employee em=(Employee)obj;
+		Employee em=(Employee)obj;
 		System.out.println("1st"+getKin_Id());
 		System.out.println("2nd"+em.getKin_Id());
 		if(this.getKin_Id()==em.getKin_Id())
@@ -155,29 +148,26 @@ public class Employee {
 			return true;
 		}
 		
-		return false;*/
-		if(obj==null)
-		{
-			
-		}
+		return false;
+	
 		if(obj instanceof Employee)
 		{
 			
 			Employee ep=(Employee)obj;
-			if(this.getKin_Id()==ep.getKin_Id()) //&& this.getEmail_Id()==ep.getEmail_Id())
+			if(this.getKin_Id()==ep.getKin_Id() || this.getEmail_Id().equals(ep.getEmail_Id()))
 			{
-				System.out.println("same kin_id found");
+				System.out.println("same kin_id found and email found");
 				return true;
 			}
 			
 		}
 		//System.out.println("add some record first");
 		return false;
-	}
+	}*/
 
 	@Override
 	public String toString() {
-		return "Employee [Name=" + Name + ",Phone="+ Phone_No+",Kin_id="+Kin_Id+",Emailid="+ Email_Id+",DOB="+ DOB+",DOJ="+ DOJ+",Employee_id"+ Employee_Id+",Department="+ Department_Id+",Project="+ Project_Id+",Role="+ Roles_Id+"]";
+		return "Employee [Name=" + Name + ",Phone="+ Phone_No+",Kin_id="+Kin_Id+",Emailid="+ Email_Id+",DOB="+ DOB+",DOJ="+ DOJ+",Employee_id="+ Employee_Id+",Department="+ Department_Id+",Project="+ Project_Id+",Role="+ Roles_Id+"]";
 	}
 	
 

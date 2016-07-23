@@ -25,34 +25,35 @@ public class Validate {
 	private static Pattern pattern;
 	private static Matcher matcher;
 
-	public Validate() {
+	/*public Validate() {
 		
 		pattern = Pattern.compile(EMAIL_PATTERN);
 		
 		//super();
-	}
+	}*/
 
-	private static final String EMAIL_PATTERN = 
+/*	private static final String EMAIL_PATTERN = 
 			"^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
 			+ "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
-
+*/
 	public static  boolean isvalidname(String name) {
 		
+		Pattern pattern = Pattern.compile("^[a-zA-Z0-9].$");
+		Matcher matcher = pattern.matcher(name);
 		
 		
-		if(name.equals("")) return false;
+		if(name.equals(""))//&& !matcher.matches()) 
+			return false;
+		//System.out.println("Name must be alphanumeric");
+return true;
 		
-		
-		else{
-	
-		return true;
-		}
-
 	}
 
 	static boolean isvalidkin() {
 
+		
+		
 		return true;
 
 	}
@@ -89,15 +90,11 @@ public class Validate {
 	}*/
 
 	public static boolean isvalidEmail(String mail) {
-		return flag;
-		/*String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
-		java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
-		java.util.regex.Matcher  = p.matcher(mail);
-		//return m.matches();
-		matcher = pattern.matcher(mail);
-		return matcher.matches();*/
 		
-
+		 String ePattern = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@((\\[[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\.[0-9]{1,3}\\])|(([a-zA-Z\\-0-9]+\\.)+[a-zA-Z]{2,}))$";
+			java.util.regex.Pattern p = java.util.regex.Pattern.compile(ePattern);
+			java.util.regex.Matcher m = p.matcher(mail);
+			return m.matches();
 	}
 	
 	public static boolean isvalidDate(String dat)

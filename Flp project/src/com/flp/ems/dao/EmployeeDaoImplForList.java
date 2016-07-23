@@ -1,5 +1,6 @@
 package com.flp.ems.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -9,12 +10,21 @@ import java.util.ListIterator;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
+import java.util.TreeSet;
 
+import com.flp.ems.domain.Department;
 import com.flp.ems.domain.Employee;
+import com.flp.ems.domain.Project;
+import com.flp.ems.domain.Role;
+import com.flp.ems.util.Validate;
 
 public class EmployeeDaoImplForList implements IemployeeDao {
 	List<Employee> employees = new ArrayList<Employee>();
-	Set<Employee> hs = new HashSet<>();
+	/*
+	 * List<Department> department=new ArrayList<Department>(); List<Project>
+	 * projects=new ArrayList<Project>(); List<Role> role=new ArrayList<Role>();
+	 */
+	Set<Employee> hs = new HashSet<Employee>();
 
 	Employee e = new Employee();
 
@@ -22,19 +32,23 @@ public class EmployeeDaoImplForList implements IemployeeDao {
 
 	Scanner scan = new Scanner(System.in);
 
-	public Employee AddEmployee(Employee e) {
+	public void AddEmployee(Employee e) {
 		// TODO Auto-generated method stub
 
 		employees.add(e);
+		/*
+		 * department.addAll(e.getDepartment_Id());
+		 * projects.add(e.getProject()); role.add(e.getRole());
+		 */
 		System.out.println("List-> " + employees);
-		return e;
+		// return e;
 
 	}
 
 	@Override
-	public void ModifyEmployee(Map empdetails, String name, String email,
-			int kinid, int empid) {
+	public Employee ModifyEmployee(Map empdetails, String name, String email, int kinid, int empid) {
 
+		boolean flags;
 		Employee emp = SearchEmployee(name, email, kinid);
 
 		int index = employees.indexOf(emp);
@@ -43,14 +57,29 @@ public class EmployeeDaoImplForList implements IemployeeDao {
 		switch (empid) {
 
 		case 1:
+			String value;
+
 			emp.setName((String) empdetails.get("Name"));
-			employees.add(index, emp);
+			value = emp.getName();
+
+			if (Validate.isvalidname(value)) {
+				System.out.println("valid name");
+				employees.add(index, emp);
+				flags = true;
+
+			}
+
+			flags = false;
+			System.out.println("invalid name or not found..");
+			// if(emp.getName((String) empdetails.get("Name"))
+
 			break;
 		case 2:
 			emp.setEmail_Id((String) empdetails.get("Emailid"));
 			employees.add(index, emp);
 			break;
 		}
+		return e;
 
 	}
 
@@ -67,47 +96,21 @@ public class EmployeeDaoImplForList implements IemployeeDao {
 
 				it.remove();
 
-				System.out.println("Data removed");
+				System.out.println("\nData removed..Select getAllEmployee.. to see the changes");
 				employees.clear();
-				System.out.println(employees);
+				// System.out.println(employees);
 				break;
 			}
 
 			System.out.println("something wrong");
 		}
 
-		/*
-		 * for (Employee e : employees) {
-		 * 
-		 * if (e.getKin_Id()==empid) { employees.remove(e);
-		 * System.out.println("Data removed");
-		 * 
-		 * System.out.println(employees); return true;
-		 * 
-		 * } System.out.println("something wrong"); }
-		 */
-		/*
-		 * employees.remove(e); System.out.println("Data removed");
-		 * System.out.println(employees);
-		 */
+		
 		return false;
 
 	}
 
-	/*
-	 * public Employee SearchEmployee(int empid) {
-	 * 
-	 * for (Employee e : employees) {
-	 * 
-	 * if (e.getKin_Id() == empid) { System.out.println("in search dao"); return
-	 * e; }
-	 * 
-	 * }
-	 * 
-	 * return null;
-	 * 
-	 * }
-	 */
+	
 	@Override
 	public Employee SearchEmployee(String name, String email, int kinid) {
 		if (employees.isEmpty()) {
@@ -117,12 +120,13 @@ public class EmployeeDaoImplForList implements IemployeeDao {
 		for (Employee e : employees) {
 			if (e.getName().equals(name)) {
 				System.out.println("match found for name provided");
-
-				return e;
+                  return e;
+				
+			//	return e;
 
 			}
 
-			else if (e.getEmail_Id().equals(email)) {
+				else if (e.getEmail_Id().equals(email)) {
 				System.out.println("match found for email id provided ");
 				return e;
 
@@ -131,21 +135,17 @@ public class EmployeeDaoImplForList implements IemployeeDao {
 				return e;
 			}
 
-			else if (e.getName().equals(name) && e.getEmail_Id().equals(email)
-					&& e.getKin_Id() == kinid) {
-				System.out
-						.println("match found for name,email id and kin id provided");
+			else if (e.getName().equals(name) && e.getEmail_Id().equals(email) && e.getKin_Id() == kinid) {
+				System.out.println("match found for name,email id and kin id provided");
 
 				return e;
 
-			} else if (e.getName().equals(name)
-					&& e.getEmail_Id().equals(email)) {
+			} else if (e.getName().equals(name) && e.getEmail_Id().equals(email)) {
 				System.out.println("match found for name,email id provided");
 				return e;
 
 			} else if (e.getEmail_Id().equals(email) && e.getKin_Id() == kinid) {
-				System.out
-						.println("match found for email id and kin id provided");
+				System.out.println("match found for email id and kin id provided");
 
 				return e;
 
@@ -182,7 +182,15 @@ public class EmployeeDaoImplForList implements IemployeeDao {
 		}
 		System.out.println("");
 		// System.out.println("Empty List returned");
-		// System.out.println("Kin_id =null,Phone=null,Name: null, Email:null, DOB=null, DOJ=null,Employee_id=null,Department=null,Project=null,Role=null");
+		// System.out.println("Kin_id =null,Phone=null,Name: null, Email:null,
+		// DOB=null,
+		// DOJ=null,Employee_id=null,Department=null,Project=null,Role=null");
+	}
+
+	@Override
+	public boolean RemoveEmployee(int id, Employee e) throws ClassNotFoundException, SQLException {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	/*
